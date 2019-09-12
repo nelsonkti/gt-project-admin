@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
-    'namespace' => 'App\Http\Controllers\api',
+    'namespace' => 'App\Http\Controllers\Api',
     'middleware' => [
         'bindings', // 路由交给 DingoApi 来处理了，这里需要手动增加模型绑定中间件
     ]

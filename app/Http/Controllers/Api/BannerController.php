@@ -10,7 +10,6 @@ class BannerController extends Controller
 {
     public function index(Request $request, SysBanner $banner)
     {
-
         return $this->response->paginator(
             $banner->index($request),
             new BaseTransformer()

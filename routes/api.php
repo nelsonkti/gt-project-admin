@@ -34,5 +34,19 @@ $api->version('v1', [
 
     $api->get('/listing/label/list', 'ListingController@getListingByLabel')
         ->name('api.listing.label.list.get');
+
+    $api->group(['prefix' => 'video'], function ($api) {
+
+        // todo 视频封列表
+        $api->get('/list', 'VideoController@index')
+            ->name('api.video.list.get');
+
+        // todo 视频剧集列表
+        $api->get('/{video_id}/series/list', 'VideoController@getSeriesList')
+            ->name('api.video.series.list.get');
+
+        $api->get('/analysis/lines/list', 'VideoController@getAnalysisLineList')
+            ->name('api.video.series.list.get');
+    });
 });
 

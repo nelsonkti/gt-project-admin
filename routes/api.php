@@ -41,9 +41,13 @@ $api->version('v1', [
         $api->get('/list', 'VideoController@index')
             ->name('api.video.list.get');
 
+        $api->get('/info', 'VideoController@info')
+            ->name('api.video.info.get');
+
         // todo 视频剧集列表
         $api->get('/{video_id}/series/list', 'VideoController@getSeriesList')
             ->name('api.video.series.list.get');
+
 
         $api->get('/analysis/lines/list', 'VideoController@getAnalysisLineList')
             ->name('api.video.series.list.get');

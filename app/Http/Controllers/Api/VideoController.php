@@ -37,6 +37,20 @@ class VideoController extends Controller
     }
 
     /**
+     * 获取视频详情
+     * @param Request $request
+     * @param Video $model
+     * @return \Dingo\Api\Http\Response
+     */
+    public function info(Request $request, Video $model)
+    {
+        return $this->response->item(
+            $model->info($request),
+            new BaseTransformer()
+        );
+    }
+
+    /**
      * 获取视频剧集地址
      * @param Request $request
      * @param VideoSeries $model

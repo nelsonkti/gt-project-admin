@@ -30,4 +30,9 @@ class Video extends Model
             @$request->page ?? 1
         );
     }
+
+    public function info($request)
+    {
+        return self::query()->where('id', $request->id)->first();
+    }
 }

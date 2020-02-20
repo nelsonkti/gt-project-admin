@@ -14,6 +14,16 @@ class Video extends Model
 
     protected $table = "videos";
 
+    public function videoToCategory()
+    {
+        return $this->belongsToMany(
+            Category::class,
+            'video_to_category',
+            'video_id',
+            'category_id'
+        );
+    }
+
     /**
      * 可以被批量赋值的属性.
      *
@@ -23,7 +33,11 @@ class Video extends Model
 
     public function index($request)
     {
-        return self::query()->paginate(
+        return self::query()
+            ->orderByDesc('publish_time')
+            ->orderByDesc('id')
+            ->with(['videoToCategory:*'])
+            ->paginate(
             @$request->per_page ?? 100,
             ['*'],
             'page',
@@ -33,6 +47,8 @@ class Video extends Model
 
     public function info($request)
     {
-        return self::query()->where('id', $request->id)->first();
+        return self::query()
+            ->where('id', $request->id)
+            ->first();
     }
 }
